@@ -1,4 +1,7 @@
 .vscode
+
+.pio/build/megaatmega2560/idedata.json
+
 # Prerequisites
 *.d
 
