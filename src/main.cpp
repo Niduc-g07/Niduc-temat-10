@@ -9,7 +9,7 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  mesureDistance(2);
+  mesureDistance(1);
 }
 
 // put function definitions here:
