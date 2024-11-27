@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "lib.h"
-#include "TMR.h"
+#include "majority.h"
 #include "Median.h"
 #include "Iterative.h"
 
@@ -13,6 +13,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   majority_vote(mesureDistance(1),mesureDistance(2),mesureDistance(3));
   find_median_sorted(mesureDistance(1),mesureDistance(2),mesureDistance(3));
+  three_domain_voters(mesureDistance(1),mesureDistance(2),mesureDistance(3));
   iterative_vote(mesureDistance(1),mesureDistance(2),mesureDistance(3));
 
   delay(100);
