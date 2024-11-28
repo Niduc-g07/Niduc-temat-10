@@ -55,3 +55,12 @@ double mesureDistance (short index){
 
     return result;
 }
+
+double *allDistances(){
+    double result[3];
+
+    for(int i = 0; i < 3; i++)
+        result[i] = mesureDistance(i);
+
+    return result;
+}

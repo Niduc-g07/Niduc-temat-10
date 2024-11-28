@@ -4,22 +4,29 @@
 #include "Median.h"
 #include "Iterative.h"
 
+
+double *data;
 void setup() {
-  // put your setup code here, to run once:
-  initSensors();
+
+  initSensors();        //inicjalizacja czujników
+  Serial.begin(9600);   //inicjalizacja portu seryjnego
+
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  majority_vote(mesureDistance(1),mesureDistance(2),mesureDistance(3));
-  find_median_sorted(mesureDistance(1),mesureDistance(2),mesureDistance(3));
-  three_domain_voters(mesureDistance(1),mesureDistance(2),mesureDistance(3));
-  iterative_vote(mesureDistance(1),mesureDistance(2),mesureDistance(3));
+  data = allDistances();                            //szczytanie pomiaru z czujników
 
-  delay(100);
-}
+  Serial.print("Glosowanie 1: ");                   //wypisanie wyniku algorytmu ?
+  Serial.println(majority_vote(data[0], data[1], data[2]));
 
-// put function definitions here:
-int myFunction(int x, int y) {
-  return x + y;
+  Serial.print("Glosowanie 2: ");                   //wypisanie wyniku algorytmu ?
+  Serial.println(find_median_sorted(data[0], data[1], data[2]));
+  
+  Serial.print("Glosowanie 3: ");                   //wypisanie wyniku algorytmu ?
+  Serial.println(three_domain_voters(data[0], data[1], data[2]));
+
+  Serial.print("Glosowanie 4: ");                   //wypisanie wyniku algorytmu ?
+  Serial.println(iterative_vote(data[0], data[1], data[2]));
+
+  delay(2000);
 }
