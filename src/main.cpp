@@ -16,7 +16,7 @@ void setup() {
 void loop() {
   data = allDistances();                              //szczytanie pomiaru z czujników
 
-  Serial.print("\nWyniki pomiarow:\n1. ");            //wypisanie wynikow do konsoli
+  Serial.print("\nWyniki pomiarow:\n1. ");            //wypisanie wyników pomiarów do konsoli
   Serial.print(data[0]);
   Serial.print("cm\n2. ");
   Serial.print(data[1]);
@@ -24,19 +24,19 @@ void loop() {
   Serial.print(data[2]);
   Serial.print("cm\n");
 
-  Serial.print("Algorytm majority_vote: ");                           //wypisanie wyniku algorytmu majority_vote
+  Serial.print("Algorytm glosowania wiekszosciowego: ");                            //wypisanie wyniku algorytmu głosowania większościowego 
   Serial.println(majority_vote(data[0], data[1], data[2]));
 
-  Serial.print("Algorytm find_median_sorted: ");                      //wypisanie wyniku algorytmu find_median_sorted
+  Serial.print("Algorytm medianowy: ");                                             //wypisanie wyniku algorytmu medianowego
   Serial.println(find_median_sorted(data[0], data[1], data[2]));
   
-  Serial.print("Algorytm three_domain_voters: ");                     //wypisanie wyniku algorytmu three_domain_voters
-  Serial.println(three_domain_voters(data[0], data[1], data[2]));
+  Serial.print("Algorytm odrzucenia najwiekszej roznicy: ");                        //wypisanie wyniku algorytmu odrzucenia największej różnicy
+  Serial.println(large_difference_rejection(data[0], data[1], data[2]));
 
-  Serial.print("Algorytm iterative_vote: ");                          //wypisanie wyniku algorytmu iterative_vote
+  Serial.print("Algorytm iteracyjny: ");                                            //wypisanie wyniku algorytmu iteracyjnego
   Serial.println(iterative_vote(data[0], data[1], data[2]));
 
-  free(data);
+  free(data);                                       //zwolnienie pamięci
 
   delay(1500);
 }

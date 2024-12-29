@@ -1,12 +1,15 @@
 #include <math.h>
 
-#define EPSILON 2
+#define EPSILON 2                           //definicja epsilonu (jednostka -> cm)
 
-int double_equal(double a, double b) {
+bool double_equal(double a, double b) {     //porównanie z uwzględnieniem epsilonu
     return fabs(a - b) < EPSILON;
 }
 
-double majority_vote(double module1, double module2, double module3) {
+double majority_vote(double module1, double module2, double module3) {      //funkcja głosująca algorytmem głosowania większościowego
+                                                                            //w przypadku różnic pomiędzy odczytami większych od wartości
+                                                                            //epsilon funkcja zwraca -1, sygnalizując brak wyboru
+
     if (double_equal(module1, module2)) {
         return module1;  
     } else if (double_equal(module1, module3)) {
@@ -18,12 +21,13 @@ double majority_vote(double module1, double module2, double module3) {
     }
 }
 
-double abs_diff(double a, double b) {
+double abs_diff(double a, double b) {       //funkcja obliczająca wartość bezwzględną z różnicy wyników dwóch pomiarów
     return fabs(a - b);
 }
 
-
-double three_domain_voters(double s1, double s2, double s3) {
+double large_difference_rejection(double s1, double s2, double s3) {        //funkcja implementująca algorytm odrzucenia największej różnicy
+                                                                            //algorytm ten odrzuca wynik najbardziej odbiegający od reszty
+                                                                            //jako wynik zwraca średnią z pozostałych wyników
 
     double d12 = abs_diff(s1, s2);
     double d23 = abs_diff(s2, s3);
