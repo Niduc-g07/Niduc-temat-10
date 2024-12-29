@@ -1,9 +1,9 @@
 #define trigerPIN1 22
-#define trigerPIN2 24
-#define trigerPIN3 26
+#define trigerPIN2 26
+#define trigerPIN3 30
 #define echoPIN1 23
-#define echoPIN2 25
-#define echoPIN3 27
+#define echoPIN2 27
+#define echoPIN3 31
 
 void initSensors(){
     pinMode(trigerPIN1, OUTPUT);
@@ -43,9 +43,9 @@ double mesureDistance (short index){
             break;
 
         case 2:
-            digitalWrite(trigerPIN2, HIGH);
+            digitalWrite(trigerPIN3, HIGH);
             delayMicroseconds(10);
-            digitalWrite(trigerPIN2, LOW);
+            digitalWrite(trigerPIN3, LOW);
 
             result = pulseIn(echoPIN3, HIGH);
             break;
@@ -57,10 +57,13 @@ double mesureDistance (short index){
 }
 
 double *allDistances(){
-    double result[3];
+    double *result = (double*)malloc(3);
 
-    for(int i = 0; i < 3; i++)
+    for(int i = 0; i < 3; i++){
         result[i] = mesureDistance(i);
+        delay(100);
+    }
+        
 
     return result;
 }

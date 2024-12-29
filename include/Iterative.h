@@ -1,8 +1,8 @@
 #include<math.h>
 
-#define EPSILON 0.01
+#define EPSILON 2
 
-float Average(float* values, bool* isValid)
+double Average(double* values, bool* isValid)
 {
     double sum = 0.0;
     int count = 0;
@@ -19,10 +19,10 @@ float Average(float* values, bool* isValid)
     return (count > 0) ? (sum / count) : 0.0;
 }
 
-double iterative_vote(float module1, float module2, float module3) 
+double iterative_vote(double module1, double module2, double module3) 
 {
     bool isValid[3] = {true, true, true}; 
-    float values[3] = {module1, module2, module3};
+    double values[3] = {module1, module2, module3};
 
     for (int i = 0; i < 3; ++i)
     {

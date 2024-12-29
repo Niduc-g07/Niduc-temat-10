@@ -1,39 +1,41 @@
 #include <math.h>
 
-#define EPSILON 0.01
+#define EPSILON 2
 
-int float_equal(float a, float b) {
+int double_equal(double a, double b) {
     return fabs(a - b) < EPSILON;
 }
 
-float majority_vote(float module1, float module2, float module3) {
-    if (float_equal(module1, module2)) {
+double majority_vote(double module1, double module2, double module3) {
+    if (double_equal(module1, module2)) {
         return module1;  
-    } else if (float_equal(module1, module3)) {
+    } else if (double_equal(module1, module3)) {
         return module1;  
-    } else if (float_equal(module2, module3)) {
+    } else if (double_equal(module2, module3)) {
         return module2;  
     } else {
         return -1;  
     }
 }
 
-float abs_diff(float a, float b) {
+double abs_diff(double a, double b) {
     return fabs(a - b);
 }
 
 
-float three_domain_voters(float s1, float s2, float s3) {
+double three_domain_voters(double s1, double s2, double s3) {
 
-    float d12 = abs_diff(s1, s2);
-    float d23 = abs_diff(s2, s3);
-    float d13 = abs_diff(s1, s3);
+    double d12 = abs_diff(s1, s2);
+    double d23 = abs_diff(s2, s3);
+    double d13 = abs_diff(s1, s3);
 
-    if (d12 >= d23 && d12 >= d13) {
-        float (s1 + s2) / 2.0;
-    } else if (d23 >= d12 && d23 >= d13) {
-        float (s2 + s3) / 2.0;
-    } else {
-        float (s1 + s3) / 2.0;
-    }
+    if (d12 >= d23 && d12 >= d13) 
+        return (s1 + s2) / 2.0;
+
+    if (d23 >= d12 && d23 >= d13) 
+        return (s2 + s3) / 2.0;
+    
+        
+    return (s1 + s3) / 2.0;
+    
 }
