@@ -1,6 +1,6 @@
 #include<math.h>
 
-#define EPSILON 2                           //definicja epsilonu (jednostka -> cm)
+#define EPSILON 0.5                           //definicja epsilonu (jednostka -> cm)
 
 double Average(double* values, bool* isValid)       //funkcja licząca średnią z 
 {

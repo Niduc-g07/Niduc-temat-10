@@ -65,6 +65,8 @@ double *allDistances(){                     //odczytuje odległości z wszystkic
         result[i] = mesureDistance(i);
         delay(100);
     }
+
+    result[1]++;
     
     return result;
 }

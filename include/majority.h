@@ -1,6 +1,6 @@
 #include <math.h>
 
-#define EPSILON 2                           //definicja epsilonu (jednostka -> cm)
+#define EPSILON 0.5                           //definicja epsilonu (jednostka -> cm)
 
 bool double_equal(double a, double b) {     //porównanie z uwzględnieniem epsilonu
     return fabs(a - b) < EPSILON;
