@@ -10,6 +10,7 @@ void setup() {
 
   initSensors();        //inicjalizacja czujników
   Serial.begin(9600);   //inicjalizacja portu seryjnego
+  Serial.println("Pomiar 1, Pomiar 2, Pomiar 3, Wiekszosciowy, Mediana, LDR, Iteracyjny");
 
 }
 
